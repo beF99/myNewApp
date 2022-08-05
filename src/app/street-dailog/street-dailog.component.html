@@ -1,0 +1,22 @@
+
+<div class="myStreet">
+<h1 *ngIf="!this.data.streetObj.streetName">   רחוב חדש  </h1>
+<h1 *ngIf="this.data.streetObj.streetName">  פרטי רחוב  </h1>
+
+<h3>   {{this.data.city.cityName}} </h3>
+<div  dir="rtl">
+<mat-form-field  class="example-full-width" appearance="fill">
+    <mat-label >  :שם הרחוב  </mat-label>
+    <input type="text" matInput required [formControl]="StreetsNameControl">
+  </mat-form-field>
+</div>
+<button *ngIf="this.data.streetObj.streetName"  mat-fab color="primary" 
+ (click)="DleeteStreete()" >  
+ <mat-icon>delete</mat-icon>
+ </button>
+  <button *ngIf="!this.data.streetObj.streetName" mat-raised-button color="primary" [disabled]="!StreetsNameControl.valid" (click)="addStreete()" >  הוסף  </button>
+
+  <button *ngIf="this.data.streetObj.streetName" mat-raised-button color="primary" [disabled]="!StreetsNameControl.valid" (click)="updateStreete()" >  עדכן  </button>
+
+
+</div>

@@ -1,0 +1,26 @@
+
+<div id="stItems">
+  <div class="grid" dir="rtl">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>רחוב</mat-label>
+      <input type="text"
+             placeholder="בחרו רחוב מתוכה"
+             aria-label="Number"
+             matInput
+             [formControl]="StreetsControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <ng-container *ngFor="let street of filteredStreets| async" >
+            <ng-container *ngIf="street.cityId === idCity">
+                <mat-option (click)="OpenDailoge(street)"  [value]="street.streetName" >  {{street.streetName}} </mat-option>
+
+            </ng-container>
+        </ng-container>
+      </mat-autocomplete>
+    </mat-form-field>
+
+</div>
+<div>
+  <button mat-fab color="primary" (click)="OpenDailoge(ThisStreet)">הוסף רחוב</button>
+</div>
+</div>
